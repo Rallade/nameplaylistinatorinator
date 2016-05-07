@@ -3,11 +3,14 @@
 import requests
 import spotipy
 
-spotify = spotipy.Spotify()
+class spotify_operations():
 
-spotify_endpoint = "https://api.spotify.com/v1/"
+    def __init__(self):
+        spotify = spotipy.Spotify()
 
-def getSongs(userID, playlist, oAuth):
-    tracks = []
-    params = {'playlist'}
-    url = spotify_endpoint + '/users/{}/playlists/{}/tracks'.format(userID, playlist)
+        spotify_endpoint = "https://api.spotify.com/v1"
+
+    def getSongs(userID, playlist, oAuth):
+        tracks = []
+        params = {'playlist'}
+        url = spotify_endpoint + '/users/{}/playlists/{}/tracks'.format(userID, playlist)
