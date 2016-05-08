@@ -1,8 +1,8 @@
 from sklearn import tree
 import csv
 
-f = open('features.csv')
-csv_f = csv.reader(f)
+features = open('features.csv')
+csv_featurea = csv.reader(features)
 
 for row in csv_f:
     print(row)
