@@ -27,14 +27,13 @@ class spotify_operations():
     	SPOTIPY_REDIRECT_URI='http://localhost:8888/callback'
 
     	scope = 'playlist-modify-private'
-
     	token = util.prompt_for_user_token(self.username, scope, SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI)
 
     	if token:
     		sp = spotipy.Spotify(auth=token)
     		ids = [trackid]
     		metadata = sp.audio_features(ids);
-            return metadata
+    		return metadata
     		#with open('metadata.json', 'w') as f1:
     		#	json.dump(metadata, f1)
     	else:
