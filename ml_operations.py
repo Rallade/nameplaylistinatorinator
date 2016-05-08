@@ -1,5 +1,7 @@
 import csv
 import sklearn
+import helpers
+
 
 class ml_operations():
 
@@ -11,6 +13,8 @@ class ml_operations():
         with open("labels.csv", "rb") as f:
             reader = csv.reader(f)
             labels = list(reader)
+
+        labels = helpers.adjectives_to_int(labels)
 
         classifier = sklearn.tree.DecisionTreeClassifier()
 
