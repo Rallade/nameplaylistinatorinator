@@ -19,8 +19,7 @@ class spotify_operations():
         print(len(data["items"]))
         for i in range(0, len(data["items"])):
             track_ids.append(data["items"][i]["track"]["id"])
-        print(track_ids)
-        return data["items"][0]["track"]["id"]
+        return track_ids
 
     def get_track_metadata(self, trackid):
     	SPOTIPY_CLIENT_ID='c61ea8f273e341faa04681b289894ee6'
@@ -35,8 +34,9 @@ class spotify_operations():
     		sp = spotipy.Spotify(auth=token)
     		ids = [trackid]
     		metadata = sp.audio_features(ids);
-    		with open('metadata.json', 'w') as f1:
-    			json.dump(metadata, f1)
+            return metadata
+    		#with open('metadata.json', 'w') as f1:
+    		#	json.dump(metadata, f1)
     	else:
     	    print("Can't get token for", trackid)
 
@@ -48,5 +48,6 @@ class spotify_operations():
 if __name__ == "__main__":
     with open('playlist.json') as f:
         so = spotify_operations()
-        track = so.get_tracks_in_playlist(f)
-        print(so.get_track_metadata(track))
+        track_id_list = so.get_tracks_in_playlist(f)
+        for track in track_id_list:
+            print(so.get_track_metadata(track))
