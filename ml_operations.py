@@ -15,8 +15,11 @@ class ml_operations():
             labels = list(reader)
 
         labels = helpers.adjectives_to_int(labels)
-
-        meta_features = [features[1], features[2]] 
+        i = 0
+        meta_features = []
+        for rows in features:
+            meta_features.append([features[1],features[2]])
+            print(" " + [features[1],features[2]])
         
         classifier = sklearn.tree.DecisionTreeClassifier()
 
