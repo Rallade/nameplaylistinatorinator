@@ -12,8 +12,8 @@ class spotify_operations():
     def __init__(self):
         self.spotify = spotipy.Spotify()
         self.spotify_endpoint = "https://api.spotify.com/v1"
-        self.username = "1142780915"
-        self.playlist_id = "0dmCRdGkYnSgLtpONJB9ZY"
+        self.username = "spotify_uk_"
+        self.playlist_id = "3swUuRQY6xIKziiN31FdGQ"
 
     def get_tracks_in_playlist(self, playlist_json):
         data = playlist_json
@@ -29,7 +29,7 @@ class spotify_operations():
     	SPOTIPY_REDIRECT_URI='http://localhost:8888/callback'
 
     	scope = 'playlist-modify-private'
-    	token = "BQCb1qwiGoIBWTh6pEPPf5-U92OZEFosUUNinafO0P0VRYU4bKNA6f3u7XPATnE5v_RqnOyfKlnW0blTGaPPfunzJ6ncd88421c6pgp7kWt_y5sFfLpiX3GOf-BPz8MgYB6cl42IJPh-sIKBFy38bHI8HhHTP3O4W-yPq6CW6Zzku383fCuix1JFgdmodBXGkdUfPMRJufKvd7J9IApqNTU2cGGH_-6QMlBn2kvqLY8O8Q7bkOR-6EarPHe69yqgF3z2vfv4xLMUBQRIoUI"
+    	token = "BQDCnH05aLLtZ5DNxbM6uUthGitPTd_EqAzYY-PZSvPcCIXcFyeFJ5ISCZJiI1KmYXe6hjgOTB6TmEi8Ivl53_tUqn8Xw0T5i0SviwIhehsX_YPDhqrBNtI1rXSmrJu294pLbFiY3MpMdu-Gv7mfipypKGLwqs_tanUHV9OzkoB1XENkDaBJcOtzkpvOH5ISf1G6jSmdicJzcDNozvmp9D5Tyq538xObp6zVATOry8k8VGVlTnYqP5P74eeeeVD65QDiwl8USm6Def99tGU"
     	if token:
     		sp = spotipy.Spotify(auth=token)
     		ids = [trackid]
@@ -47,12 +47,12 @@ class spotify_operations():
 
         scope = 'playlist-modify-private'
 
-        token = "BQCb1qwiGoIBWTh6pEPPf5-U92OZEFosUUNinafO0P0VRYU4bKNA6f3u7XPATnE5v_RqnOyfKlnW0blTGaPPfunzJ6ncd88421c6pgp7kWt_y5sFfLpiX3GOf-BPz8MgYB6cl42IJPh-sIKBFy38bHI8HhHTP3O4W-yPq6CW6Zzku383fCuix1JFgdmodBXGkdUfPMRJufKvd7J9IApqNTU2cGGH_-6QMlBn2kvqLY8O8Q7bkOR-6EarPHe69yqgF3z2vfv4xLMUBQRIoUI"
+        token = "BQDCnH05aLLtZ5DNxbM6uUthGitPTd_EqAzYY-PZSvPcCIXcFyeFJ5ISCZJiI1KmYXe6hjgOTB6TmEi8Ivl53_tUqn8Xw0T5i0SviwIhehsX_YPDhqrBNtI1rXSmrJu294pLbFiY3MpMdu-Gv7mfipypKGLwqs_tanUHV9OzkoB1XENkDaBJcOtzkpvOH5ISf1G6jSmdicJzcDNozvmp9D5Tyq538xObp6zVATOry8k8VGVlTnYqP5P74eeeeVD65QDiwl8USm6Def99tGU"
 
         if token:
         	sp = spotipy.Spotify(auth=token)
         	sp.trace = False
-        	playlist = sp.user_playlist_tracks('theageoldstruggle', self.playlist_id)
+        	playlist = sp.user_playlist_tracks(self.username, self.playlist_id)
         	return playlist
             #with open('playlist.json', 'w') as f1:
         	#	json.dump(playlist, f1)

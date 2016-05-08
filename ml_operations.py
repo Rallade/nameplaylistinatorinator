@@ -6,6 +6,7 @@ import helpers
 class ml_operations():
 
     def __init__(self):
+
         with open("features.csv", "r") as f:
             self.csvreader = csv.reader(f)
             self.features = list(self.csvreader)
@@ -18,14 +19,14 @@ class ml_operations():
         self.meta_features = []
         for rows in self.features:
             self.meta_features.append([self.features[i][0], self.features[i][1]])
-            print([self.meta_features[i]])
             i += 1
 
 
-    def predict(self):
+    def predict(self, song_data):
         classifier = tree.DecisionTreeClassifier()
         classifier = classifier.fit(self.meta_features, self.labels)
-        print(classifier.predict([0.219, 0.165]))
+        return classifier.predict(song_data)
+        #print(classifier.predict([0.219, 0.165]))
 
 if __name__ == "__main__":
     ml = ml_operations()
