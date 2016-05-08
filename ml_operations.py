@@ -1,7 +1,7 @@
 import csv
 from sklearn import tree
 import helpers
-
+import statistics
 
 class ml_operations():
 
@@ -27,6 +27,15 @@ class ml_operations():
         classifier = classifier.fit(self.meta_features, self.labels)
         return classifier.predict(song_data)
         #print(classifier.predict([0.219, 0.165]))
+
+    def aggregate(self, playlist):
+        values = []
+        i = 0
+        for item in playlist:
+            values[i] = item[0]
+            i += 1
+
+        return statistics.mode(values)
 
 if __name__ == "__main__":
     ml = ml_operations()
