@@ -14,13 +14,11 @@ class ml_operations():
             reader = csv.reader(f)
             labels = list(reader)
 
-        labels = helpers.adjectives_to_int(labels)
-
-        meta_features = [features[1], features[2]] 
+        labels = helpers.adjectives_to_int(labels) 
         
         classifier = sklearn.tree.DecisionTreeClassifier()
 
 
     def predict(song_values, adjective):
-        classifier = classifier.fit(meta_features, labels)
+        classifier = classifier.fit(features, labels)
         print classifier.predict([[song_values, adjective]])
