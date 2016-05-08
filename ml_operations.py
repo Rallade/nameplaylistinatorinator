@@ -1,33 +1,31 @@
 import csv
-import sklearn
-import helpers
 from sklearn import tree
+import helpers
+
 
 class ml_operations():
 
     def __init__(self):
-        with open("features.csv", "rt") as f:
-            reader = csv.reader(f)
-            features = list(reader)
+        with open("features.csv", "rb") as f:
+            self.csvreader = csv.reader(f)
+            self.features = list(self.csvreader)
 
-        with open("labels.csv", "rt") as f:
-            reader = csv.reader(f)
-            labels = list(reader)
+        with open("labels.csv", "rb") as f:
+            self.csvreader = csv.reader(f)
+            self.labels = list(self.csvreader)
 
-        labels = helpers.adjectives_to_int(labels)
         i = 0
-        meta_features = []
-        for rows in features:
-            meta_features.append([features[1]])
-            print([features[1]])
+        self.meta_features = []
+        for rows in self.features:
+            self.meta_features.append([self.features[1]])
+            print([self.features[1]])
 
 
-
-    def predict(self, song_values):
-	classifier = sklearn.tree.DecisionTreeClassifier()
-        classifier = classifier.fit(meta_features, labels)
-        print(classifier.predict([[song_values]]))
+    def predict(self):
+        classifier = tree.DecisionTreeClassifier()
+        classifier = classifier.fit(self.meta_features, self.labels)
+        print classifier.predict([[0.5, 0.6]])
 
 if __name__ == "__main__":
     ml = ml_operations()
-    ml.predict([0.5, 0.6])
+    ml.predict()
