@@ -15,7 +15,11 @@ class spotify_operations():
 
     def get_tracks_in_playlist(self, playlist_json):
         data = json.load(playlist_json)
+        track_ids = []
         print(len(data["items"]))
+        for i in range(0, len(data["items"])):
+            track_ids.append(data["items"][i]["track"]["id"])
+        print(track_ids)
         return data["items"][0]["track"]["id"]
 
     def get_track_metadata(self, trackid):
