@@ -3,17 +3,37 @@
 import requests
 import spotipy
 import json
+import sys
+import spotipy.util as util
 
 class spotify_operations():
 
     def __init__(self):
         self.spotify = spotipy.Spotify()
         self.spotify_endpoint = "https://api.spotify.com/v1"
+        self.username = "1142780915"
 
     def get_tracks_in_playlist(self, playlist_json):
         data = json.load(playlist_json)
-        print(data["items"][0]["track"]["id"])
+        return data["items"][0]["track"]["id"]
 
+    def get_track_metadata(self, trackid):
+    	SPOTIPY_CLIENT_ID='c61ea8f273e341faa04681b289894ee6'
+    	SPOTIPY_CLIENT_SECRET='83f8d583b70d420186ab8be3c9d9faac'
+    	SPOTIPY_REDIRECT_URI='http://localhost:8888/callback'
+
+    	scope = 'playlist-modify-private'
+
+    	token = util.prompt_for_user_token(self.username, scope, SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI)
+
+    	if token:
+    		sp = spotipy.Spotify(auth=token)
+    		ids = [trackid]
+    		metadata = sp.audio_features(ids);
+    		with open('metadata.json', 'w') as f1:
+    			json.dump(metadata, f1)
+    	else:
+    	    print("Can't get token for", trackid)
 
     def getSongs(userID, playlist, oAuth):
         tracks = []
@@ -23,4 +43,5 @@ class spotify_operations():
 if __name__ == "__main__":
     with open('playlist.json') as f:
         so = spotify_operations()
-        so.get_tracks_in_playlist(f)
+        track = so.get_tracks_in_playlist(f)
+        print(so.get_track_metadata(track))
