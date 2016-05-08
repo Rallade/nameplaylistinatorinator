@@ -16,5 +16,4 @@ if __name__ == "__main__":
         for metadata in metadata_list:
             #print(str(metadata[i]["id"]) + ", " + str(metadata[i]["valence"]) + ", " + str(metadata[i]["energy"]))
             scores_list.append(ml.predict([metadata[i]["valence"], metadata[i]["energy"]]))
-
-        
+        print(scores_list)
