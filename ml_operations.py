@@ -18,12 +18,16 @@ class ml_operations():
         i = 0
         meta_features = []
         for rows in features:
-            meta_features.append([features[1],features[2]])
-            print(" " + [features[1],features[2]])
-        
+            meta_features.append([features[1]])
+            print([features[1]])
+
         classifier = sklearn.tree.DecisionTreeClassifier()
 
 
-    def predict(song_values, adjective):
+    def predict(song_values):
         classifier = classifier.fit(meta_features, labels)
-        print classifier.predict([[song_values, adjective]])
+        print classifier.predict([[song_values]])
+
+if __name__ == "__main__":
+    ml = ml_operations()
+    ml.predict([0.5, 0.6])
