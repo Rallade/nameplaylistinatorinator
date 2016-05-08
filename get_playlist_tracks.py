@@ -22,7 +22,7 @@ token = util.prompt_for_user_token(username, scope, SPOTIPY_CLIENT_ID, SPOTIPY_C
 if token:
 	sp = spotipy.Spotify(auth=token)
 	sp.trace = False
-	playlist = sp.user_playlist_tracks(username, '2IEfJNoWklzEaJY1jNTLdE')
+	playlist = sp.user_playlist_tracks(username, playlist_id)
 	with open('playlist.json', 'w') as f1:
 		json.dump(playlist, f1)
 else:
