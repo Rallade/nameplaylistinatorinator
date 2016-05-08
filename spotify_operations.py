@@ -16,7 +16,7 @@ class spotify_operations():
         self.playlist_id = "0dmCRdGkYnSgLtpONJB9ZY"
 
     def get_tracks_in_playlist(self, playlist_json):
-        data = json.load(playlist_json)
+        data = playlist_json
         track_ids = []
         print(len(data["items"]))
         for i in range(0, len(data["items"])):
@@ -41,7 +41,7 @@ class spotify_operations():
     	else:
     	    print("Can't get token for", trackid)
 
-    def get_playlist_tracks():
+    def get_playlist_tracks(self):
         SPOTIPY_CLIENT_ID='c61ea8f273e341faa04681b289894ee6'
         SPOTIPY_CLIENT_SECRET='83f8d583b70d420186ab8be3c9d9faac'
         SPOTIPY_REDIRECT_URI='http://localhost:8888/callback'
@@ -53,8 +53,8 @@ class spotify_operations():
         if token:
         	sp = spotipy.Spotify(auth=token)
         	sp.trace = False
-        	playlist = sp.user_playlist_tracks(self.username, self.playlist_id)
-            return playlist
+        	playlist = sp.user_playlist_tracks('theageoldstruggle', self.playlist_id)
+        	return playlist
             #with open('playlist.json', 'w') as f1:
         	#	json.dump(playlist, f1)
         else:
