@@ -18,7 +18,7 @@ class ml_operations():
         self.meta_features = []
         for rows in self.features:
             self.meta_features.append([self.features[i][0], self.features[i][1]])
-            print([self.meta_features[i]])
+#            print([self.meta_features[i]])
             i += 1
 
 
