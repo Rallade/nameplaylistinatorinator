@@ -39,4 +39,4 @@ class ml_operations():
 
 if __name__ == "__main__":
     ml = ml_operations()
-    ml.predict()
+#    ml.predict() #needs fixing.
